@@ -1402,7 +1402,6 @@
                             id="consentBox"
                             name="consent"
                             checked
-                            required
                         >
                         <label for="consentBox">
                             ברצוננו ליצור קשר בנוגע לבקשה שלכם. ידוע לנו שהפרטים ישמשו לצורך חזרה אליכם.
@@ -1470,10 +1469,18 @@
             const form = e.target;
             const statusEl = document.getElementById("formStatus");
             const submitBtn = form.querySelector(".submit-btn");
+            const consentBox = document.getElementById("consentBox");
 
             if (GOOGLE_SCRIPT_URL.includes("PASTE_YOUR") || !GOOGLE_SCRIPT_URL.endsWith("/exec")) {
                 statusEl.textContent = "כתובת החיבור לגוגל שיטס לא תקינה. בדקו את GOOGLE_SCRIPT_URL.";
                 statusEl.className = "form-status error";
+                return;
+            }
+
+            if (!consentBox.checked) {
+                statusEl.textContent = "יש לאשר יצירת קשר כדי לשלוח את הטופס.";
+                statusEl.className = "form-status error";
+                consentBox.focus();
                 return;
             }
 
