@@ -622,6 +622,7 @@
 
             justify-content: center;
             align-items: center;
+            padding: 16px;
 
             z-index: 999;
         }
@@ -641,6 +642,8 @@
             animation: popupAnimation 0.4s ease;
 
             position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
         @keyframes popupAnimation {
@@ -856,6 +859,48 @@
         /* MOBILE */
 
         @media(max-width: 768px) {
+
+            .overlay {
+                align-items: flex-start;
+                padding: 12px;
+            }
+
+            .popup {
+                width: 100%;
+                max-width: 100%;
+                max-height: 92vh;
+                margin-top: 6px;
+                padding: 18px 14px 16px;
+                border-radius: 18px;
+            }
+
+            .popup-title {
+                font-size: 27px;
+                margin-bottom: 12px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .span-2 {
+                grid-column: auto;
+            }
+
+            .interest-options {
+                gap: 8px;
+            }
+
+            .interest-options label {
+                padding: 10px 0;
+                font-size: 13px;
+            }
+
+            .submit-btn {
+                padding: 14px 0;
+                font-size: 17px;
+            }
 
             .hero h1 {
 
