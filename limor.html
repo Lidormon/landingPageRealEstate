@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+
+<html lang="he" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        L.M - תיווך ויעוץ נדל״ן
+    </title>
+
+    <link
+        id="siteFavicon"
+        rel="icon"
+        type="image/png"
+        href="assets/favicon.png"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://db.onlinewebfonts.com"
+        crossorigin
+    >
+
+    <style>
+
+        @font-face {
+            font-family: "Hadassah Friedlaender";
+            src: url("https://db.onlinewebfonts.com/t/60e877e9f6ac8844ebc9461a665b0011.woff2") format("woff2"),
+                 url("https://db.onlinewebfonts.com/t/60e877e9f6ac8844ebc9461a665b0011.woff") format("woff");
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        * {
+
+            margin: 0;
+            padding: 0;
+
+            box-sizing: border-box;
+        }
+
+        body {
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            background: #f5f7fa;
+
+            color: #333;
+        }
+
+        /* HERO */
+
+        .hero {
+
+            min-height: 100vh;
+
+            background:
+                linear-gradient(
+                    rgba(15, 76, 129, 0.8),
+                    rgba(33, 150, 243, 0.8)
+                ),
+
+                url("https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1400&auto=format&fit=crop");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            padding: 20px;
+        }
+
+        .hero-content {
+
+            background: rgba(255,255,255,0.1);
+
+            backdrop-filter: blur(8px);
+
+            padding: 50px;
+
+            border-radius: 25px;
+
+            color: white;
+
+            max-width: 780px;
+        }
+
+        @keyframes logoFadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .hero-logo-showcase {
+            position: relative;
+            width: min(480px, 94vw);
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border-radius: 0;
+            box-shadow: none;
+            overflow: visible;
+            opacity: 0;
+            animation: logoFadeIn 3s ease-out forwards;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .hero-logo-showcase {
+                animation: none;
+                opacity: 1;
+            }
+        }
+
+        .hero-logo-frame {
+            width: 100%;
+            border-radius: 32px;
+            overflow: hidden;
+            display: block;
+            line-height: 0;
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+        }
+
+        .hero-logo-inner {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: contain;
+            object-position: center center;
+            border-radius: 32px;
+        }
+
+        .hero h1 {
+
+            font-family: "Hadassah Friedlaender", serif;
+            font-size: 56px;
+            font-weight: normal;
+            margin-bottom: 20px;
+            line-height: 1.25;
+        }
+
+        .hero p {
+
+            font-family: "Hadassah Friedlaender", serif;
+            font-size: 28px;
+            font-weight: normal;
+            line-height: 1.6;
+            margin-bottom: 35px;
+        }
+
+        .hero button {
+
+            background: white;
+
+            color: #0f4c81;
+
+            border: none;
+
+            padding: 16px 35px;
+
+            border-radius: 14px;
+
+            font-size: 20px;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .hero button:hover {
+
+            transform: translateY(-4px);
+
+            background: #e3f2fd;
+        }
+
+        /* SECTION */
+
+        .section {
+
+            padding: 80px 20px;
+
+            text-align: center;
+        }
+
+        .section h2 {
+
+            font-family: "Hadassah Friedlaender", serif;
+            font-size: 42px;
+            font-weight: normal;
+            margin-bottom: 20px;
+            color: #0f4c81;
+        }
+
+        .section-subtitle {
+
+            font-family: "Hadassah Friedlaender", serif;
+            font-size: 24px;
+            font-weight: normal;
+            color: #666;
+            max-width: 800px;
+            margin: auto;
+            line-height: 1.8;
+        }
+
+        /* CARDS */
+
+        .features {
+
+            display: flex;
+
+            gap: 25px;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            margin-top: 50px;
+        }
+
+        .card {
+
+            background: white;
+
+            width: 300px;
+
+            padding: 40px 25px;
+
+            border-radius: 25px;
+
+            box-shadow:
+                0 10px 30px rgba(0,0,0,0.08);
+
+            border: 1px solid rgba(33, 150, 243, 0.12);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card:hover {
+
+            transform: translateY(-8px);
+            box-shadow: 0 18px 36px rgba(15, 76, 129, 0.16);
+            border-color: rgba(33, 150, 243, 0.32);
+        }
+
+        .icon {
+
+            font-size: 55px;
+
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+
+            font-size: 28px;
+
+            margin-bottom: 15px;
+
+            color: #0f4c81;
+        }
+
+        .card p {
+
+            font-size: 18px;
+
+            line-height: 1.7;
+
+            color: #555;
+        }
+
+        /* SOLD GALLERY MARQUEE */
+        .sold-gallery {
+            padding: 50px 0;
+            background: #eef4fb;
+            overflow: hidden;
+        }
+
+        .sold-gallery-viewport {
+            overflow: hidden;
+            width: 100%;
+            direction: ltr;
+        }
+
+        .sold-gallery-track {
+            display: flex;
+            width: max-content;
+            animation: galleryScroll 80s linear infinite;
+            will-change: transform;
+        }
+
+        .sold-gallery-track:hover {
+            animation-play-state: paused;
+        }
+
+        .sold-gallery-group {
+            display: flex;
+            flex-shrink: 0;
+            gap: 22px;
+            padding-right: 22px;
+        }
+
+        .sold-gallery-item {
+            flex: 0 0 auto;
+            width: 260px;
+            height: 360px;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 12px 28px rgba(15, 76, 129, 0.18);
+            border: 3px solid #fff;
+        }
+
+        .sold-gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* מעגל סגור: כשסט ראשון יוצא משמאל, הסט השני ממשיך ואז חוזרים להתחלה */
+        @keyframes galleryScroll {
+            from {
+                transform: translate3d(0, 0, 0);
+            }
+            to {
+                transform: translate3d(-50%, 0, 0);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .sold-gallery-track {
+                animation: none;
+                flex-wrap: wrap;
+                justify-content: center;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sold-gallery {
+                padding: 35px 0;
+            }
+
+            .sold-gallery-item {
+                width: 200px;
+                height: 280px;
+            }
+
+            .sold-gallery-group {
+                gap: 14px;
+                padding-right: 14px;
+            }
+
+            .sold-gallery-track {
+                animation-duration: 55s;
+            }
+        }
+
+        /* BROKER SERVICE HIGHLIGHT */
+        .broker-service {
+            padding: 85px 20px 35px;
+            background: #f5f7fa;
+        }
+
+        .broker-service-box {
+            max-width: 1050px;
+            margin: 0 auto;
+            padding: 34px 30px;
+            border-radius: 24px;
+            background: linear-gradient(135deg, #0f4c81 0%, #2196f3 100%);
+            color: white;
+            box-shadow: 0 18px 40px rgba(15, 76, 129, 0.3);
+            position: relative;
+            overflow: hidden;
+            animation: serviceGlow 3.4s ease-in-out infinite alternate;
+        }
+
+        .broker-service-box::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 85% 15%, rgba(255,255,255,0.23), transparent 45%);
+            pointer-events: none;
+        }
+
+        .broker-service-inner {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .broker-service-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .broker-service-logo {
+            flex: 0 0 320px;
+            width: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            align-self: center;
+            min-height: 320px;
+            margin-top: 28px;
+            border-radius: 28px;
+            overflow: hidden;
+        }
+
+        .broker-service-logo img {
+            width: 108%;
+            height: 108%;
+            object-fit: contain;
+            object-position: center center;
+            display: block;
+            border-radius: 28px;
+            background: transparent;
+            padding: 0;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .broker-service h2 {
+            font-size: 42px;
+            margin-bottom: 18px;
+            line-height: 1.35;
+        }
+
+        .broker-service-intro {
+            font-size: 22px;
+            line-height: 1.9;
+            margin-bottom: 24px;
+        }
+
+        .broker-service-subtitle {
+            font-size: 29px;
+            margin-bottom: 14px;
+            font-weight: bold;
+        }
+
+        .broker-service-list {
+            list-style: none;
+        }
+
+        .broker-service-list li {
+            font-size: 21px;
+            line-height: 1.9;
+            margin-bottom: 6px;
+        }
+
+        @keyframes serviceGlow {
+            from {
+                box-shadow: 0 18px 40px rgba(15, 76, 129, 0.26);
+            }
+            to {
+                box-shadow: 0 22px 48px rgba(15, 76, 129, 0.4);
+            }
+        }
+
+        /* SELLER INSIGHTS */
+        .seller-insights {
+            padding: 90px 20px;
+            background:
+                linear-gradient(180deg, #eef6ff 0%, #f7fbff 100%);
+        }
+
+        .insights-wrap {
+            max-width: 1050px;
+            margin: 0 auto;
+        }
+
+        .insights-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .insights-header h2 {
+            color: #0f4c81;
+            font-size: 40px;
+            margin-bottom: 18px;
+        }
+
+        .insights-header p {
+            color: #4f5f73;
+            font-size: 21px;
+            line-height: 1.9;
+        }
+
+        .insight-block {
+            background: #fff;
+            border-radius: 20px;
+            padding: 30px 26px;
+            margin-bottom: 20px;
+            box-shadow: 0 12px 30px rgba(15, 76, 129, 0.1);
+            border: 1px solid rgba(33, 150, 243, 0.12);
+            transition: transform 0.45s ease, box-shadow 0.45s ease, opacity 0.65s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .insight-block:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 36px rgba(15, 76, 129, 0.16);
+        }
+
+        .insight-block.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .insight-block h3 {
+            color: #0f4c81;
+            font-size: 31px;
+            margin-bottom: 15px;
+        }
+
+        .insight-block p,
+        .insight-block li {
+            color: #3d4b5d;
+            font-size: 20px;
+            line-height: 1.95;
+        }
+
+        .insight-block ul {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        .insight-block li {
+            margin-bottom: 8px;
+        }
+
+        .insight-note {
+            margin-top: 14px;
+            color: #0f4c81;
+            font-weight: bold;
+        }
+
+        /* CONTACT */
+
+        .contact {
+
+            background: white;
+
+            margin: 40px auto;
+
+            width: 90%;
+            max-width: 900px;
+
+            border-radius: 30px;
+
+            padding: 60px 30px;
+
+            text-align: center;
+
+            box-shadow:
+                0 10px 30px rgba(0,0,0,0.08);
+            border: 1px solid rgba(33, 150, 243, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .contact:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 36px rgba(15, 76, 129, 0.16);
+            border-color: rgba(33, 150, 243, 0.28);
+        }
+
+        .contact h2 {
+
+            font-size: 42px;
+
+            margin-bottom: 30px;
+
+            color: #0f4c81;
+        }
+
+        .contact p {
+
+            font-size: 24px;
+
+            margin: 20px 0;
+        }
+
+        .phone {
+
+            color: #2196f3;
+
+            font-weight: bold;
+        }
+
+        /* POPUP */
+
+        .overlay {
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            background: rgba(0,0,0,0.65);
+
+            display: none;
+
+            justify-content: center;
+            align-items: center;
+
+            z-index: 999;
+        }
+
+        .popup {
+
+            background: white;
+
+            width: 92%;
+            max-width: 820px;
+            padding: 28px 28px 24px 28px;
+
+            border-radius: 25px;
+
+            text-align: center;
+
+            animation: popupAnimation 0.4s ease;
+
+            position: relative;
+        }
+
+        @keyframes popupAnimation {
+
+            from {
+
+                transform: scale(0.7);
+
+                opacity: 0;
+            }
+
+            to {
+
+                transform: scale(1);
+
+                opacity: 1;
+            }
+        }
+
+        .popup h2 {
+
+            font-size: 34px;
+
+            margin-bottom: 20px;
+
+            color: #0f4c81;
+        }
+
+        .popup p {
+
+            font-size: 20px;
+
+            line-height: 1.8;
+
+            margin-bottom: 25px;
+        }
+
+        /* FORM */
+        .popup-title {
+            font-size: 34px;
+            margin-bottom: 18px;
+            color: #0f4c81;
+            text-align: right;
+        }
+
+        .popup-form {
+            text-align: right;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px 22px;
+            margin-top: 6px;
+        }
+
+        .field label {
+            display: block;
+            font-size: 14px;
+            color: #0f4c81;
+            margin-bottom: 8px;
+        }
+
+        .field input,
+        .field textarea {
+            width: 100%;
+            padding: 14px 14px;
+            border: 1px solid #d4dbe6;
+            background: #f6f8fb;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+            text-align: right;
+            direction: rtl;
+        }
+
+        .field textarea {
+            min-height: 90px;
+            resize: none;
+        }
+
+        .span-2 {
+            grid-column: 1 / -1;
+        }
+
+        .interest-row {
+            margin-top: 16px;
+        }
+
+        .interest-title {
+            text-align: right;
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #0f4c81;
+        }
+
+        .interest-options {
+            display: flex;
+            gap: 14px;
+            justify-content: flex-end;
+        }
+
+        .interest-options input {
+            display: none;
+        }
+
+        .interest-options label {
+            flex: 1;
+            text-align: center;
+            padding: 12px 0;
+            border: 1px solid #d4dbe6;
+            background: #f6f8fb;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #2196f3;
+            transition: 0.2s;
+            user-select: none;
+        }
+
+        .interest-options input:checked+label {
+            background: #e3f2fd;
+            border-color: #2196f3;
+            color: #0f4c81;
+        }
+
+        .consent {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            margin-top: 18px;
+            color: #555;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .consent input {
+            margin-top: 3px;
+            width: 18px;
+            height: 18px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            margin-top: 18px;
+            background: #5298f3;
+            color: white;
+            border: none;
+            border-radius: 14px;
+            padding: 16px 0;
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .submit-btn:hover {
+            background: #3e86ea;
+        }
+
+        .form-status {
+            margin-top: 12px;
+            font-size: 15px;
+            text-align: center;
+            min-height: 22px;
+            color: #3d4b5d;
+        }
+
+        .form-status.success {
+            color: #1f8f42;
+            font-weight: bold;
+        }
+
+        .form-status.error {
+            color: #c63a3a;
+            font-weight: bold;
+        }
+
+        .popup a {
+
+            display: inline-block;
+
+            background: #2196f3;
+
+            color: white;
+
+            padding: 16px 30px;
+
+            border-radius: 14px;
+
+            text-decoration: none;
+
+            font-size: 20px;
+
+            transition: 0.3s;
+        }
+
+        .popup a:hover {
+
+            background: #0f4c81;
+        }
+
+        .close-btn {
+
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            color: #9aa3af;
+            cursor: pointer;
+            font-size: 18px;
+            line-height: 1;
+        }
+
+        /* MOBILE */
+
+        @media(max-width: 768px) {
+
+            .hero h1 {
+
+                font-size: 42px;
+            }
+
+            .hero p {
+
+                font-size: 20px;
+            }
+
+            .hero-content {
+
+                padding: 35px 20px;
+            }
+
+            .hero-logo-showcase {
+
+                width: min(340px, 92vw);
+            }
+
+            .hero-logo-frame {
+
+                border-radius: 24px;
+            }
+
+            .hero-logo-inner {
+
+                border-radius: 24px;
+            }
+
+            .section h2 {
+
+                font-size: 34px;
+            }
+
+            .card {
+
+                width: 100%;
+            }
+
+            .insights-header h2 {
+                font-size: 30px;
+            }
+
+            .broker-service h2 {
+                font-size: 32px;
+            }
+
+            .broker-service-intro,
+            .broker-service-list li {
+                font-size: 18px;
+            }
+
+            .broker-service-subtitle {
+                font-size: 24px;
+            }
+
+            .broker-service-inner {
+                flex-direction: column;
+                gap: 24px;
+            }
+
+            .broker-service-logo {
+                flex: 0 0 auto;
+                order: -1;
+                width: 250px;
+                height: 250px;
+                min-height: 250px;
+                margin-top: 16px;
+                border-radius: 22px;
+            }
+
+            .broker-service-logo img {
+                border-radius: 22px;
+            }
+
+            .insights-header p,
+            .insight-block p,
+            .insight-block li {
+                font-size: 18px;
+            }
+
+            .insight-block h3 {
+                font-size: 26px;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="hero-logo-showcase">
+                <div class="hero-logo-frame">
+                    <img
+                        id="mainLogo"
+                        class="hero-logo-inner"
+                        src="assets/logo-lm.png"
+                        alt="לוגו Limor Mondel"
+                    >
+                </div>
+            </div>
+
+            <h1>
+                L.M תיווך ויעוץ נדלן
+            </h1>
+
+            <p>
+                ליווי אישי ומקצועי עד לקבלת המפתח 🏠
+            </p>
+
+            <button onclick="openPopup()">
+
+               ליצירת קשר השאירו פרטים
+
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- ABOUT -->
+
+    <section class="section">
+
+        <h2>
+
+            למה לבחור ב־L.M ?
+
+        </h2>
+
+        <p class="section-subtitle">
+
+            שירות מקצועי, יחס אישי,
+            שקיפות מלאה וליווי לאורך כל הדרך.
+            <br><br>
+            המטרה שלנו היא לעזור לכם
+            למצוא את הבית המושלם
+            או למכור את הנכס בצורה הטובה ביותר.
+
+        </p>
+
+        <div class="features">
+
+            <div class="card">
+
+                <div class="icon">
+                    🏠
+                </div>
+
+                <h3>
+                    ליווי אישי
+                </h3>
+
+                <p>
+                    יחס אישי וזמינות מלאה
+                    לאורך כל התהליך
+                    עד קבלת המפתח.
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <div class="icon">
+                    📈
+                </div>
+
+                <h3>
+                    שיווק מקצועי
+                </h3>
+
+                <p>
+                    פרסום מתקדם,
+                    חשיפה רחבה
+                    והתאמה מדויקת לקונים.
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <div class="icon">
+                    🤝
+                </div>
+
+                <h3>
+                    אמינות ושקיפות
+                </h3>
+
+                <p>
+                    שירות אמין,
+                    מקצועי ושקוף
+                    עם מחויבות מלאה ללקוח.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- SOLD / RENTED GALLERY -->
+    <section class="sold-gallery" aria-label="נכסים שנמכרו והושכרו">
+        <div class="sold-gallery-viewport">
+            <div class="sold-gallery-track">
+                <div class="sold-gallery-group">
+                    <div class="sold-gallery-item"><img src="assets/gallery/sold-1.png" alt="נכס שנמכר"></div>
+                    <div class="sold-gallery-item"><img src="assets/gallery/sold-2.png" alt="נכס שנמכר"></div>
+                    <div class="sold-gallery-item"><img src="assets/gallery/sold-3.png" alt="נכס שנמכר"></div>
+                    <div class="sold-gallery-item"><img src="assets/gallery/sold-5.png" alt="נכס שהושכר"></div>
+                    <div class="sold-gallery-item"><img src="assets/gallery/sold-6.png" alt="נכס שנמכר"></div>
+                    <div class="sold-gallery-item"><img src="assets/gallery/sold-7.png" alt="נכס שנמכר"></div>
+                    <div class="sold-gallery-item"><img src="assets/gallery/sold-8.png" alt="נכס שנמכר"></div>
+                    <div class="sold-gallery-item"><img src="assets/gallery/sold-9.png" alt="נכס שהושכר"></div>
+                    <div class="sold-gallery-item"><img src="assets/gallery/sold-12.png" alt="נכס שנמכר"></div>
+                    <div class="sold-gallery-item"><img src="assets/gallery/sold-13.png" alt="נכס שנמכר"></div>
+                    <div class="sold-gallery-item"><img src="assets/gallery/sold-14.png" alt="נכס שנמכר"></div>
+                </div>
+                <div class="sold-gallery-group" aria-hidden="true">
+                    <div class="sold-gallery-item"><img src="assets/gallery/sold-1.png" alt=""></div>
+                    <div class="sold-gallery-item"><img src="assets/gallery/sold-2.png" alt=""></div>
+                    <div class="sold-gallery-item"><img src="assets/gallery/sold-3.png" alt=""></div>
+                    <div class="sold-gallery-item"><img src="assets/gallery/sold-5.png" alt=""></div>
+                    <div class="sold-gallery-item"><img src="assets/gallery/sold-6.png" alt=""></div>
+                    <div class="sold-gallery-item"><img src="assets/gallery/sold-7.png" alt=""></div>
+                    <div class="sold-gallery-item"><img src="assets/gallery/sold-8.png" alt=""></div>
+                    <div class="sold-gallery-item"><img src="assets/gallery/sold-9.png" alt=""></div>
+                    <div class="sold-gallery-item"><img src="assets/gallery/sold-12.png" alt=""></div>
+                    <div class="sold-gallery-item"><img src="assets/gallery/sold-13.png" alt=""></div>
+                    <div class="sold-gallery-item"><img src="assets/gallery/sold-14.png" alt=""></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BROKER SERVICE -->
+    <section class="broker-service">
+        <div class="broker-service-box">
+            <div class="broker-service-inner">
+                <div class="broker-service-content">
+                    <h2>שירותי תיווך למכירת נכס</h2>
+                    <p class="broker-service-intro">
+                        שירות תיווך וליווי עסקאות נדל"ן החל משלב הייעוץ ועד לסגירת העסקה.
+                        הוא מיועד לכל מי, שפניו לביצוע עסקת נדל"ן החל ממכירה או רכישה של נכס ועד לנכסים להשקעה והשכרה.
+                    </p>
+                    <div class="broker-service-subtitle">הליווי כולל בתוכו:</div>
+                    <ul class="broker-service-list">
+                        <li>✔ פרסום</li>
+                        <li>✔ הצגת הנכס בצורה מקצועית ביותר</li>
+                        <li>✔ סינון לקוחות פוטנציאלים על מנת להגיע לרציניים ולמתאימים בלבד</li>
+                        <li>✔ משא ומתן מקצועי וניטרלי עם לקוחות פוטנציאליים</li>
+                        <li>✔ שיווק בבלעדיות עד 180 יום</li>
+                    </ul>
+                </div>
+                <div class="broker-service-logo">
+                    <img
+                        src="assets/broker-logo.png"
+                        alt="לוגו L.M - Limor Mondel"
+                    >
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SELLER INSIGHTS -->
+    <section class="seller-insights">
+        <div class="insights-wrap">
+            <div class="insights-header">
+                <h2>מפרסמים דירה למכירה? הנה מה שכדאי לדעת לפני שאתם כותבים "ללא תיווך"</h2>
+                <p>
+                    אז החלטתם למכור את הדירה שלכם. ברכות! אולי כבר פרסמתם מודעה,
+                    ואולי אפילו הוספתם את הכיתוב "ללא תיווך" או "מתווכים, לא להתקשר".
+                    זה אולי נשמע הגיוני, אבל לפני שאתם סוגרים דלת בפני אנשי מקצוע - עצרו רגע וחשבו:
+                    האם שקלתם את כל ההיבטים? המטרה שלנו היא לא לשכנע, אלא להציג בפניכם את התמונה המלאה,
+                    כדי שתוכלו לקבל את ההחלטה הנכונה עבורכם.
+                </p>
+            </div>
+
+            <article class="insight-block">
+                <h3>האם אתם באמת חוסכים כסף?</h3>
+                <p>
+                    אחת הסיבות הנפוצות להימנע מעבודה עם מתווך היא הרצון לחסוך בעמלה.
+                    עם זאת, מתווך מקצועי מביא איתו:
+                </p>
+                <ul>
+                    <li>✔ ידע על השוק האמיתי: תמחור נכון הוא המפתח לעסקה טובה.</li>
+                    <li>✔ ניהול משא ומתן: מתווך מיומן יודע איך להעלות את ערך הנכס ולהשיג מחיר גבוה יותר.</li>
+                    <li>✔ חשיפה רחבה ואיכותית: בזכות רשת הקשרים שלנו, הנכס מגיע לקונים רציניים בלבד.</li>
+                </ul>
+                <p class="insight-note">
+                    מתווך טוב לא רק מכסה את העמלה, אלא לעיתים קרובות מביא לכם יותר כסף בסוף התהליך.
+                </p>
+            </article>
+
+            <article class="insight-block">
+                <h3>כמה זמן וסבלנות יש לכם?</h3>
+                <p>
+                    מכירת דירה היא הרבה יותר מ"להעלות מודעה". היא כוללת:
+                </p>
+                <ul>
+                    <li>- עשרות פגישות, חלקן עם מתעניינים לא רציניים.</li>
+                    <li>- התמודדות עם שאלות ותירוצים כמו "נחשוב על זה".</li>
+                    <li>- ניהול משא ומתן מול קונים שמנסים להוריד את המחיר.</li>
+                </ul>
+                <p class="insight-note">
+                    אם יש לכם זמן פנוי וסבלנות להתמודד עם כל זה - מצוין. אם לא, מתווך מקצועי חוסך לכם כאב ראש.
+                </p>
+            </article>
+
+            <article class="insight-block">
+                <h3>למה דווקא בלעדיות?</h3>
+                <p>
+                    יש מי שחושבים ש"יותר מתווכים" פירושו יותר חשיפה - אבל האמת היא הפוכה.
+                    כשאתם עובדים עם מתווך בבלעדיות, אתם נהנים מ:
+                </p>
+                <ul>
+                    <li>✔ תשומת לב מלאה לנכס שלכם.</li>
+                    <li>✔ שיווק ממוקד ואפקטיבי.</li>
+                    <li>✔ שיתוף פעולה עם מתווכים נוספים, כדי להביא לכם את כל הקונים בשוק.</li>
+                </ul>
+                <p class="insight-note">
+                    בלעדיות היא לא הגבלה, היא מחויבות להשיג לכם את העסקה הטובה ביותר.
+                </p>
+            </article>
+
+            <article class="insight-block">
+                <h3>אז למה L.M - תיווך ויעוץ נדל"ן?</h3>
+                <ul>
+                    <li>✔ יחס, אמינות, שקיפות וסבלנות.</li>
+                    <li>✔ ליווי אישי וצמוד בכל שלב.</li>
+                    <li>✔ ניסיון מוכח בשיווק וניהול משא ומתן.</li>
+                    <li>✔ קשרים עם אנשי מקצוע מובילים כמו עורכי דין, שמאים ויועצי משכנתאות.</li>
+                </ul>
+            </article>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+
+    <section class="contact">
+
+        <h2>
+
+            יצירת קשר
+
+        </h2>
+
+        <p class="phone">
+
+            📞 050-7751192
+
+        </p>
+
+        <p>
+
+            📧 limormondel@gmail.com
+
+        </p>
+
+        <p>
+
+            📍 L.M - תיווך ויעוץ נדל״ן
+
+        </p>
+
+    </section>
+
+    <!-- POPUP -->
+
+    <div class="overlay" id="overlay">
+
+        <div class="popup">
+
+            <div class="close-btn" onclick="closePopup()">X</div>
+
+            <div class="popup-title">השאירו פרטים</div>
+
+            <form class="popup-form" id="contactForm">
+
+                <div class="form-grid">
+
+                    <div class="field">
+
+                        <label for="firstName">שם פרטי</label>
+                        <input
+                            type="text"
+                            id="firstName"
+                            name="firstName"
+                            autocomplete="given-name"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="field">
+
+                        <label for="lastName">שם משפחה</label>
+                        <input
+                            type="text"
+                            id="lastName"
+                            name="lastName"
+                            autocomplete="family-name"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="field">
+
+                        <label for="email">אימייל</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            autocomplete="email"
+                        >
+
+                    </div>
+
+                    <div class="field">
+
+                        <label for="phone">טלפון נייד</label>
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            autocomplete="tel"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="field">
+
+                        <label for="city">עיר</label>
+                        <input type="text" id="city" name="city">
+
+                    </div>
+
+                    <div class="field span-2">
+
+                        <label for="message">הערות</label>
+                        <textarea
+                            id="message"
+                            name="message"
+                            placeholder="ספרו לנו בקצרה על הנכס/הבקשה"
+                        ></textarea>
+
+                    </div>
+
+                    <div class="interest-row span-2">
+
+                        <div class="interest-title">האם תרצו?</div>
+
+                        <div class="interest-options">
+
+                            <input
+                                type="radio"
+                                id="interestSale"
+                                name="interest"
+                                value="מכירה"
+                                checked
+                            >
+                            <label for="interestSale">מכירה</label>
+
+                            <input
+                                type="radio"
+                                id="interestBuy"
+                                name="interest"
+                                value="קנייה"
+                            >
+                            <label for="interestBuy">קנייה</label>
+
+                            <input
+                                type="radio"
+                                id="interestRent"
+                                name="interest"
+                                value="השכרה"
+                            >
+                            <label for="interestRent">השכרה</label>
+
+                        </div>
+
+                    </div>
+
+                    <div class="consent span-2">
+
+                        <input
+                            type="checkbox"
+                            id="consentBox"
+                            name="consent"
+                            checked
+                            required
+                        >
+                        <label for="consentBox">
+                            ברצוננו ליצור קשר בנוגע לבקשה שלכם. ידוע לנו שהפרטים ישמשו לצורך חזרה אליכם.
+                        </label>
+
+                    </div>
+
+                </div>
+
+                <button type="submit" class="submit-btn">שליחת פרטים</button>
+                <div id="formStatus" class="form-status"></div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <iframe
+        name="gasSubmitFrame"
+        id="gasSubmitFrame"
+        style="display:none"
+        title="שליחת טופס"
+    ></iframe>
+
+    <script>
+
+        // popup אוטומטי אחרי 3 שניות
+
+        setTimeout(() => {
+
+            // openPopup(); // מופעל אוטומטית בעבר - כעת נפתח רק בלחיצה
+
+        }, 3000);
+
+        function openPopup() {
+
+            document
+                .getElementById("overlay")
+                .style.display = "flex";
+        }
+
+        function closePopup() {
+
+            document
+                .getElementById("overlay")
+                .style.display = "none";
+        }
+
+        // סגירה בלחיצה על הרקע (לא על המודאל עצמו)
+        document.getElementById("overlay").addEventListener("click", (e) => {
+            if (e.target && e.target.id === "overlay") {
+                closePopup();
+            }
+        });
+
+        // Google Apps Script Web App URL:
+        // הדביקו כאן את כתובת ה-Deploy שקיבלתם מגוגל Apps Script.
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby5jp4dYMbTTnuJjNlCiFR9D4RpkQ1vGBZcwyXy74B_5f6lesDSmIvLicP13Blom-dC/exec";
+
+        // שליחה ל-Google Sheets (טופס + iframe – עוקף חסימת CORS)
+        document.getElementById("contactForm").addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const form = e.target;
+            const statusEl = document.getElementById("formStatus");
+            const submitBtn = form.querySelector(".submit-btn");
+
+            if (GOOGLE_SCRIPT_URL.includes("PASTE_YOUR") || !GOOGLE_SCRIPT_URL.endsWith("/exec")) {
+                statusEl.textContent = "כתובת החיבור לגוגל שיטס לא תקינה. בדקו את GOOGLE_SCRIPT_URL.";
+                statusEl.className = "form-status error";
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = "שולח...";
+            statusEl.textContent = "";
+            statusEl.className = "form-status";
+
+            form.action = GOOGLE_SCRIPT_URL;
+            form.method = "POST";
+            form.target = "gasSubmitFrame";
+            form.submit();
+
+            statusEl.textContent = "הפרטים נשלחו בהצלחה. נחזור אליכם בהקדם.";
+            statusEl.className = "form-status success";
+
+            setTimeout(() => {
+                form.reset();
+                closePopup();
+                submitBtn.disabled = false;
+                submitBtn.textContent = "שליחת פרטים";
+            }, 1200);
+        });
+
+        // אנימציית כניסה עדינה בזמן גלילה
+        const insightBlocks = document.querySelectorAll(".insight-block");
+        const insightObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("show");
+                    insightObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        insightBlocks.forEach((block) => {
+            insightObserver.observe(block);
+        });
+
+    </script>
+
+</body>
+
+</html>
