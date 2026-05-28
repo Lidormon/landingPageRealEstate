@@ -597,6 +597,22 @@
             margin: 20px 0;
         }
 
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .contact-icon {
+            line-height: 1;
+        }
+
+        .contact-item.email .contact-text {
+            direction: ltr;
+            unicode-bidi: plaintext;
+        }
+
         .phone {
 
             color: #2196f3;
@@ -625,6 +641,30 @@
             padding: 16px;
 
             z-index: 999;
+        }
+
+        .success-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 18px;
+            z-index: 1000;
+        }
+
+        .success-popup {
+            width: min(460px, 94vw);
+            background: #ffffff;
+            color: #0f4c81;
+            border-radius: 18px;
+            padding: 24px 20px;
+            text-align: center;
+            box-shadow: 0 14px 34px rgba(0, 0, 0, 0.24);
+            line-height: 1.7;
+            font-size: 20px;
+            font-weight: bold;
         }
 
         .popup {
@@ -863,6 +903,13 @@
             .overlay {
                 align-items: flex-start;
                 padding: 12px;
+            }
+
+            .success-popup {
+                width: 100%;
+                font-size: 18px;
+                border-radius: 14px;
+                padding: 18px 14px;
             }
 
             .popup {
@@ -1257,22 +1304,19 @@
 
         </h2>
 
-        <p class="phone">
-
-            📞 050-7751192
-
+        <p class="phone contact-item">
+            <span class="contact-icon">📞</span>
+            <span class="contact-text">050-7751192</span>
         </p>
 
-        <p>
-
-            📧 limormondel@gmail.com
-
+        <p class="contact-item email">
+            <span class="contact-icon">📧</span>
+            <span class="contact-text">limormondel@gmail.com</span>
         </p>
 
-        <p>
-
-            📍 L.M - תיווך ויעוץ נדל״ן
-
+        <p class="contact-item">
+            <span class="contact-icon">📍</span>
+            <span class="contact-text">L.M - תיווך ויעוץ נדל״ן</span>
         </p>
 
     </section>
@@ -1420,6 +1464,12 @@
 
     </div>
 
+    <div class="success-overlay" id="successOverlay">
+        <div class="success-popup" role="status" aria-live="polite">
+            הפרטים נשלחו בהצלחה. נחזור אליכם בהקדם.
+        </div>
+    </div>
+
     <iframe
         name="gasSubmitFrame"
         id="gasSubmitFrame"
@@ -1451,10 +1501,40 @@
                 .style.display = "none";
         }
 
+        let successPopupTimer = null;
+
+        function openSuccessPopup() {
+            const successOverlay = document.getElementById("successOverlay");
+            successOverlay.style.display = "flex";
+
+            if (successPopupTimer) {
+                clearTimeout(successPopupTimer);
+            }
+
+            successPopupTimer = setTimeout(() => {
+                closeSuccessPopup();
+            }, 7000);
+        }
+
+        function closeSuccessPopup() {
+            const successOverlay = document.getElementById("successOverlay");
+            successOverlay.style.display = "none";
+            if (successPopupTimer) {
+                clearTimeout(successPopupTimer);
+                successPopupTimer = null;
+            }
+        }
+
         // סגירה בלחיצה על הרקע (לא על המודאל עצמו)
         document.getElementById("overlay").addEventListener("click", (e) => {
             if (e.target && e.target.id === "overlay") {
                 closePopup();
+            }
+        });
+
+        document.getElementById("successOverlay").addEventListener("click", (e) => {
+            if (e.target && e.target.id === "successOverlay") {
+                closeSuccessPopup();
             }
         });
 
@@ -1494,15 +1574,11 @@
             form.target = "gasSubmitFrame";
             form.submit();
 
-            statusEl.textContent = "הפרטים נשלחו בהצלחה. נחזור אליכם בהקדם.";
-            statusEl.className = "form-status success";
-
-            setTimeout(() => {
-                form.reset();
-                closePopup();
-                submitBtn.disabled = false;
-                submitBtn.textContent = "שליחת פרטים";
-            }, 1200);
+            form.reset();
+            closePopup();
+            openSuccessPopup();
+            submitBtn.disabled = false;
+            submitBtn.textContent = "שליחת פרטים";
         });
 
         // אנימציית כניסה עדינה בזמן גלילה
