@@ -473,6 +473,67 @@
             }
         }
 
+        /* TESTIMONIALS */
+        .testimonials {
+            padding: 75px 20px 85px;
+            background: linear-gradient(180deg, #f5f7fa 0%, #eef4fb 100%);
+            text-align: center;
+        }
+
+        .testimonials h2 {
+            font-family: "Hadassah Friedlaender", serif;
+            font-size: 42px;
+            font-weight: normal;
+            color: #0f4c81;
+            margin-bottom: 36px;
+        }
+
+        .testimonial-viewport {
+            max-width: 920px;
+            margin: 0 auto;
+            min-height: 220px;
+        }
+
+        .testimonial-card {
+            background: #fff;
+            border-radius: 22px;
+            padding: 36px 34px;
+            box-shadow: 0 14px 36px rgba(15, 76, 129, 0.12);
+            border: 1px solid rgba(33, 150, 243, 0.14);
+            text-align: right;
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 0.55s ease, transform 0.55s ease;
+            pointer-events: none;
+        }
+
+        .testimonial-card.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .testimonial-quote {
+            font-size: 20px;
+            line-height: 1.85;
+            color: #3d4b5d;
+            margin-bottom: 22px;
+        }
+
+        .testimonial-author {
+            font-size: 22px;
+            font-weight: bold;
+            color: #0f4c81;
+        }
+
+        .testimonial-hint {
+            max-width: 920px;
+            margin: 18px auto 0;
+            font-size: 15px;
+            color: #6b7c91;
+            line-height: 1.6;
+        }
+
         /* SELLER INSIGHTS */
         .seller-insights {
             padding: 90px 20px;
@@ -1025,6 +1086,29 @@
                 border-radius: 22px;
             }
 
+            .testimonials h2 {
+                font-size: 32px;
+                margin-bottom: 24px;
+            }
+
+            .testimonial-card {
+                padding: 24px 18px;
+            }
+
+            .testimonial-quote {
+                font-size: 17px;
+                line-height: 1.75;
+            }
+
+            .testimonial-author {
+                font-size: 19px;
+            }
+
+            .testimonial-hint {
+                font-size: 14px;
+                padding: 0 8px;
+            }
+
             .insights-header p,
             .insight-block p,
             .insight-block li {
@@ -1219,6 +1303,20 @@
                 </div>
             </div>
         </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials" aria-label="לקוחות ממליצים">
+        <h2>לקוחות ממליצים</h2>
+        <div class="testimonial-viewport" id="testimonialViewport">
+            <article class="testimonial-card is-visible" id="testimonialCard">
+                <p class="testimonial-quote" id="testimonialQuote"></p>
+                <p class="testimonial-author" id="testimonialAuthor"></p>
+            </article>
+        </div>
+        <p class="testimonial-hint">
+            💡 לקריאה נוחה: שימו את העכבר על ההמלצה כדי לעצור את המעבר להמלצה הבאה.
+        </p>
     </section>
 
     <!-- SELLER INSIGHTS -->
@@ -1580,6 +1678,115 @@
             submitBtn.disabled = false;
             submitBtn.textContent = "שליחת פרטים";
         });
+
+        // המלצות לקוחות – החלפה כל 5 שניות, השהיה בעת hover
+        const TESTIMONIALS = [
+            {
+                name: "Ester Katz Works",
+                text: "כלקוחה, אני יכולה להעיד שלימור הפגינה יושרה, איכפתיות, ומקצועיות לכל אורך תהליך השכרת הדירה, הייתה תקשורתית וקשובה לכל בקשותי. ממליצה בחום."
+            },
+            {
+                name: "Yossi Wolfman",
+                text: "לימור היקרה, מודה לך מקרב לב, שמחתי להכיר אותך ולעבוד איתך במשך החודשים האחרונים. הוכחת את עצמך ואת האנושיות והמקצועיות שלך לאורך כל הדרך. אני מאחל לך ולמשפחתך הצלחה, בריאות, אושר וחג חירות כשר ושמח. מי יתן וכל החטופים יחזרו בשלום הביתה במהרה."
+            },
+            {
+                name: "מאיר ניב",
+                text: "לימור את באמת אשת שיווק. עובדת מכל הלב. משקיעה בלקוחות וזאת מניסיון אישי שלי. איתך במציאת הבית שרכשתי בזכותך."
+            },
+            {
+                name: "Masha Paroshina Katz",
+                text: "לימור אלופה, עזרה לנו למצוא את ביתנו הראשון בכרמיאל 🌷 אישה מקצועית ונעימה. המון המון בהצלחה!"
+            },
+            {
+                name: "דבורי קופרמן",
+                text: "לא יודעת אם זה מקובל פה 🙃 אבל רוצה להעלות דווקא פוסט של פרגון ותודה!!! היינו לקראת מכירה של הדירה שלנו ברבין, לא רצינו להעזר במתווכים, והיה לנו חשוב למכור אותה לאנשים טובים שמתאימים לאופי של השכונה 🤍 תודה לא-ל הכרתי במקרה מתווכת חדשה, מהממת, מסורה, מקצועית, שליוותה אותנו בצורה הכי נעימה שאפשר רק לחשוב עליה. היה תענוג לפגוש מתווכת שמעניינים אותה בני האדם שאיתם היא עובדת ולא רק עסקאות 🤍 היום חתמנו על חוזה מכירה עם זוג מקסים שאנחנו כל כך שמחים שהם מגיעים לרבין, עוד זוג איכותי וכיפי שמגיע לגור בכרמיאל. המתווכת היא לימור מונדל 0507751192 תודה על הזכות להכיר אותך ולעבוד איתך! את הפוסט הזה אני כותבת באהבה גדולה ובהוקרה לא רק על התוצאה אלא על הדרך הנעימה שסללת עבורנו. תודה!"
+            },
+            {
+                name: "David Cohen",
+                text: "לימור תודה רבה, הובלת את המכירה ביד רמה בשקיפות רבה, השקעת יום אחרי יום בנחישות ובמקצועיות כדי שהמכירה תצא לפועל, היית חדורת מטרה וייצגת את האינטרסים שלנו מול כל הלקוחות שבאו וראו את הדירה, הייתה תקופה הכי קשוחה שיכולה להיות למכירת דירה (מלחמה ארוכה, טילים אזעקות) והצלחת למרות הכל, תודה רבה על הכל 🙏🙏🙏🙏🙏🙏🙏🙏🙏🙏"
+            },
+            {
+                name: "מיכל מורג וינברג",
+                text: "אני רוצה להמליץ על לימור שכל כך מקסימה ואלופה!!! תמיד מסורה ומקצועית מאוד ללקוחות ונעימה ולבית. אין כמוה! ממליצה בחום רב על לימור יועצת נדל״ן! 💯👏👏👏👏👏🌹"
+            }
+        ];
+
+        const testimonialCard = document.getElementById("testimonialCard");
+        const testimonialQuote = document.getElementById("testimonialQuote");
+        const testimonialAuthor = document.getElementById("testimonialAuthor");
+        const testimonialViewport = document.getElementById("testimonialViewport");
+
+        let testimonialIndex = 0;
+        let testimonialTimer = null;
+        let testimonialPaused = false;
+        let testimonialRemainingMs = 5000;
+        let testimonialLastTick = Date.now();
+        const TESTIMONIAL_INTERVAL_MS = 5000;
+        const TESTIMONIAL_FADE_MS = 550;
+
+        function renderTestimonial(index) {
+            const item = TESTIMONIALS[index];
+            testimonialQuote.textContent = item.text;
+            testimonialAuthor.textContent = item.name;
+        }
+
+        function showTestimonial(index, animate) {
+            if (animate) {
+                testimonialCard.classList.remove("is-visible");
+                setTimeout(() => {
+                    renderTestimonial(index);
+                    testimonialCard.classList.add("is-visible");
+                }, TESTIMONIAL_FADE_MS);
+            } else {
+                renderTestimonial(index);
+                testimonialCard.classList.add("is-visible");
+            }
+        }
+
+        function advanceTestimonial() {
+            testimonialIndex = (testimonialIndex + 1) % TESTIMONIALS.length;
+            showTestimonial(testimonialIndex, true);
+            testimonialRemainingMs = TESTIMONIAL_INTERVAL_MS;
+            testimonialLastTick = Date.now();
+        }
+
+        function scheduleTestimonialTimer() {
+            if (testimonialTimer) {
+                clearTimeout(testimonialTimer);
+            }
+            testimonialLastTick = Date.now();
+            testimonialTimer = setTimeout(() => {
+                advanceTestimonial();
+                scheduleTestimonialTimer();
+            }, testimonialRemainingMs);
+        }
+
+        function pauseTestimonialTimer() {
+            if (testimonialPaused) {
+                return;
+            }
+            testimonialPaused = true;
+            clearTimeout(testimonialTimer);
+            testimonialTimer = null;
+            testimonialRemainingMs -= Date.now() - testimonialLastTick;
+            if (testimonialRemainingMs < 0) {
+                testimonialRemainingMs = 0;
+            }
+        }
+
+        function resumeTestimonialTimer() {
+            if (!testimonialPaused) {
+                return;
+            }
+            testimonialPaused = false;
+            scheduleTestimonialTimer();
+        }
+
+        showTestimonial(0, false);
+        scheduleTestimonialTimer();
+
+        testimonialViewport.addEventListener("mouseenter", pauseTestimonialTimer);
+        testimonialViewport.addEventListener("mouseleave", resumeTestimonialTimer);
 
         // אנימציית כניסה עדינה בזמן גלילה
         const insightBlocks = document.querySelectorAll(".insight-block");
