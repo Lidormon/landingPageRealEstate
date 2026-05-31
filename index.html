@@ -492,6 +492,7 @@
             max-width: 920px;
             margin: 0 auto;
             min-height: 220px;
+            touch-action: manipulation;
         }
 
         .testimonial-card {
@@ -1315,7 +1316,8 @@
             </article>
         </div>
         <p class="testimonial-hint">
-            💡 לקריאה נוחה: שימו את העכבר על ההמלצה כדי לעצור את המעבר להמלצה הבאה.
+            💡 לקריאה נוחה: במחשב — שימו את העכבר על ההמלצה; בנייד — השאירו את האצבע על ההמלצה.
+            כך המעבר להמלצה הבאה ייעצר. כשעוזבים, הזמן ממשיך כרגיל.
         </p>
     </section>
 
@@ -1787,6 +1789,18 @@
 
         testimonialViewport.addEventListener("mouseenter", pauseTestimonialTimer);
         testimonialViewport.addEventListener("mouseleave", resumeTestimonialTimer);
+
+        testimonialViewport.addEventListener("touchstart", () => {
+            pauseTestimonialTimer();
+        }, { passive: true });
+
+        testimonialViewport.addEventListener("touchend", () => {
+            resumeTestimonialTimer();
+        });
+
+        testimonialViewport.addEventListener("touchcancel", () => {
+            resumeTestimonialTimer();
+        });
 
         // אנימציית כניסה עדינה בזמן גלילה
         const insightBlocks = document.querySelectorAll(".insight-block");
