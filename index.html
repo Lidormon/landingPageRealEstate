@@ -512,6 +512,8 @@
             opacity: 1;
             transform: translateY(0);
             pointer-events: auto;
+            -webkit-user-select: none;
+            user-select: none;
         }
 
         .testimonial-quote {
@@ -1108,6 +1110,10 @@
             .testimonial-hint {
                 font-size: 14px;
                 padding: 0 8px;
+            }
+
+            .testimonial-card.is-visible {
+                touch-action: none;
             }
 
             .insights-header p,
@@ -1723,8 +1729,10 @@
         let testimonialPaused = false;
         let testimonialRemainingMs = 5000;
         let testimonialLastTick = Date.now();
+        let testimonialTouchHoldCount = 0;
         const TESTIMONIAL_INTERVAL_MS = 5000;
         const TESTIMONIAL_FADE_MS = 550;
+        const isCoarsePointerDevice = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
 
         function renderTestimonial(index) {
             const item = TESTIMONIALS[index];
@@ -1787,20 +1795,52 @@
         showTestimonial(0, false);
         scheduleTestimonialTimer();
 
-        testimonialViewport.addEventListener("mouseenter", pauseTestimonialTimer);
-        testimonialViewport.addEventListener("mouseleave", resumeTestimonialTimer);
+        function testimonialTouchHoldStart() {
+            testimonialTouchHoldCount += 1;
+            if (testimonialTouchHoldCount === 1) {
+                pauseTestimonialTimer();
+            }
+        }
 
-        testimonialViewport.addEventListener("touchstart", () => {
-            pauseTestimonialTimer();
-        }, { passive: true });
+        function testimonialTouchHoldEnd() {
+            testimonialTouchHoldCount = Math.max(0, testimonialTouchHoldCount - 1);
+            if (testimonialTouchHoldCount === 0) {
+                resumeTestimonialTimer();
+            }
+        }
 
-        testimonialViewport.addEventListener("touchend", () => {
-            resumeTestimonialTimer();
-        });
+        if (isCoarsePointerDevice) {
+            testimonialCard.addEventListener("pointerdown", (e) => {
+                if (e.pointerType !== "touch") {
+                    return;
+                }
+                try {
+                    testimonialCard.setPointerCapture(e.pointerId);
+                } catch (_) {}
+                testimonialTouchHoldStart();
+            });
 
-        testimonialViewport.addEventListener("touchcancel", () => {
-            resumeTestimonialTimer();
-        });
+            testimonialCard.addEventListener("pointerup", (e) => {
+                if (e.pointerType !== "touch") {
+                    return;
+                }
+                if (testimonialCard.hasPointerCapture(e.pointerId)) {
+                    testimonialCard.releasePointerCapture(e.pointerId);
+                }
+                testimonialTouchHoldEnd();
+            });
+
+            testimonialCard.addEventListener("pointercancel", () => {
+                testimonialTouchHoldEnd();
+            });
+
+            testimonialCard.addEventListener("lostpointercapture", () => {
+                testimonialTouchHoldEnd();
+            });
+        } else {
+            testimonialViewport.addEventListener("mouseenter", pauseTestimonialTimer);
+            testimonialViewport.addEventListener("mouseleave", resumeTestimonialTimer);
+        }
 
         // אנימציית כניסה עדינה בזמן גלילה
         const insightBlocks = document.querySelectorAll(".insight-block");
